@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="renderer.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Top-Left: Profit Chart -->
+        <div class="top-left">
+            <canvas id="profitChart"></canvas>
+        </div>
+
+        <!-- Bottom-Left: Aggregate Stats & Session Viewer -->
+        <div class="bottom-left">
+            <div id="aggregate">
+                <h2>Aggregate Stats</h2>
+                <p id="totalSessions">Total Sessions: 0</p>
+                <p id="totalProfit">Total Profit: $0</p>
+                <p id="totalHours">Total Hours Played: 0</p>
+                <p id="totalHands">Total Hands Played: 0</p>
+            </div>
+
+            <div id="sessionViewer">
+                <h2>Session Details</h2>
+                <div id="sessionContent">
+                    <div id="sessionDetails">
+                        <p id="sessionDate">Date: --</p>
+                        <p id="sessionStakes">Stakes: --</p>
+                        <p id="sessionBuyIn">Buy-in: --</p>
+                        <p id="sessionCashOut">Cash-out: --</p>
+                        <p id="sessionProfit">Profit: --</p>
+                        <p id="sessionHours">Hours: --</p>
+                        <p id="sessionHands">Hands: --</p>
+                    </div>
+                    <div id="sessionNav">
+                        <button id="prevSession">⬆️</button>
+                        <button id="nextSession">⬇️</button>
+                        <button id="deleteSession">Delete</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right-Side: Session Input Form -->
+        <div class="right">
+            <h2>Enter New Session</h2>
+            <div class="inputs-right">
+                <input type="date" id="date">
+                <input type="text" id="stakes" placeholder="Stakes">
+                <input type="number" id="buyIn" placeholder="Buy-in">
+                <input type="number" id="cashOut" placeholder="Cash-out">
+                <input type="number" id="hours" placeholder="Hours Played">
+            </div>
+            <button id="saveSession">Save Session</button>
+        </div>
+    </div>
+</body>
+</html>

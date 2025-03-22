@@ -1,0 +1,56 @@
+{
+  "name": "electronpokertracker",
+  "version": "1.0.0",
+  "description": "Track your live poker sessions with profit charts and session stats.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon . --config electronmon.json",
+    "clean": "rimraf dist",
+    "build": "npm run clean && electron-builder --win"
+  },
+  "author": "Liam Howatt",
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^4.4.8",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^25.1.8",
+    "electronmon": "^2.0.3",
+    "rimraf": "^5.0.1"
+  },
+  "build": {
+    "appId": "com.liamhowatt.pokertracker",
+    "productName": "Poker Tracker",
+    "icon": "assets/poker-chips.ico",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist",
+      "!node_modules/electronmon",
+      "!.git",
+      "!.gitignore",
+      "!**/*.md"
+    ],
+    "extraResources": [
+      {
+        "from": "database.db",
+        "to": "database.db"
+      }
+    ],
+    "asar": false,
+    "win": {
+      "target": "nsis",
+      "sign": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
