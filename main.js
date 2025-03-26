@@ -28,15 +28,13 @@ app.whenReady().then(() => {
 });
 
 ipcMain.on("save-session", (event, session) => {
-  insertSession(session.date, session.stakes, session.buyIn, session.cashOut, session.hours, (err, result) => {
-      if (err) {
-          console.error("[Database] Error saving session:", err);
-          event.reply("session-saved", { success: false, error: err.message });
-      } else {
-          event.reply("session-saved", { success: true, session: result });
-      }
+    insertSession(session.date, session.stakes, session.buyIn, session.cashOut, session.hours, (err, result) => {
+      setImmediate(() => {
+        event.reply("session-saved", err ? { success: false, error: err.message } : { success: true, session: result });
+      });
+    });
   });
-});
+  
 
 ipcMain.on("get-sessions", (event) => {
   getSessions((err, sessions) => {

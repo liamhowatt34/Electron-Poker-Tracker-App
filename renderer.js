@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     window.electronAPI.onSessionSaved((data) => {
-
         if (data.success) {
             alert("Session saved!");
             loadSessions();
